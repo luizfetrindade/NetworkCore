@@ -80,22 +80,27 @@ extension ServiceExampleDataAccess: ServiceExampleDataAccessProtocol {
 
 protocol ServiceExampleDataAccessViewModelProtocol {
     func getServiceExample(paramExample: String)
+    var modelDto: ServiceExampleModel? { get }
 }
 
 public class ServiceExampleViewModel {
     
     public init() {}
     
+    public var modelDto: ServiceExampleModel?
     private let serviceExampleDataAccess = ServiceExampleDataAccessFactory.shared
 }
 
 extension ServiceExampleViewModel: ServiceExampleDataAccessViewModelProtocol {
     
+    
+    
     public func getServiceExample(paramExample: String) {
-        serviceExampleDataAccess.getServiceExampleData(paramExample: "example") { result in
+        serviceExampleDataAccess.getServiceExampleData(paramExample: "example") {[weak self] result in
             switch result {
             case .success(let model):
-                print("Model: ", model)
+                print("Model: ", model.response)
+                self?.modelDto = model
             case .failure(let error):
                 print("Error: ", error)
             }

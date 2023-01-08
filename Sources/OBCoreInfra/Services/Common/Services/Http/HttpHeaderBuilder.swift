@@ -43,13 +43,11 @@ public extension ContentType {
 class HttpHeadersBuilder {
     private var httpHeaders = [String: String]()
 
-    @discardableResult
     func contentType(_ contentType: ContentType = .json) -> HttpHeadersBuilder {
         httpHeaders["Content-Type"] = contentType.rawValue
         return self
     }
 
-    @discardableResult
     func acceptType() -> HttpHeadersBuilder {
         httpHeaders["Accept"] = "application/json"
         return self
