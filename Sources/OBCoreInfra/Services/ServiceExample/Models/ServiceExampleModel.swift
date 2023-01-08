@@ -1,4 +1,4 @@
 public struct ServiceExampleModel: Model {
 
-    let response: String
+    public let response: String
 }
