@@ -40,7 +40,7 @@ public extension ContentType {
     }
 }
 
-class HttpHeadersBuilder {
+public class HttpHeadersBuilder {
     private var httpHeaders = [String: String]()
 
     func contentType(_ contentType: ContentType = .json) -> HttpHeadersBuilder {
