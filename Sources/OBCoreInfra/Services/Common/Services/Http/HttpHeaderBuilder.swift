@@ -41,7 +41,7 @@ public extension ContentType {
 }
 
 public class HttpHeadersBuilder {
-    private var httpHeaders = [String: String]()
+    public var httpHeaders = [String: String]()
 
     public func contentType(_ contentType: ContentType = .json) -> HttpHeadersBuilder {
         httpHeaders["Content-Type"] = contentType.rawValue
