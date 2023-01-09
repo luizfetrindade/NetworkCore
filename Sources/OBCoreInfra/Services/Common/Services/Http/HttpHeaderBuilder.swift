@@ -41,23 +41,26 @@ public extension ContentType {
 }
 
 public class HttpHeadersBuilder {
-    public var httpHeaders = [String: String]()
+    
+    private var httpHeaders = [String: String]()
 
-    public func contentType(_ contentType: ContentType = .json) -> HttpHeadersBuilder {
+    public init() {}
+    
+    func contentType(_ contentType: ContentType = .json) -> HttpHeadersBuilder {
         httpHeaders["Content-Type"] = contentType.rawValue
         return self
     }
 
-    public func acceptType() -> HttpHeadersBuilder {
+    func acceptType() -> HttpHeadersBuilder {
         httpHeaders["Accept"] = "application/json"
         return self
     }
 
-    public func build() -> [String: String] {
+    func build() -> [String: String] {
         httpHeaders
     }
 
-    public func setValue(_ value: String, to key: String) -> HttpHeadersBuilder {
+    func setValue(_ value: String, to key: String) -> HttpHeadersBuilder {
         httpHeaders[key] = value
         return self
     }
