@@ -9,6 +9,8 @@ public protocol HttpClientProtocol {
 
 public class HttpClientFactory {
     
+    public init() {}
+    
     public static var shared: HttpClientProtocol = HttpClient()
 }
 
